@@ -38,7 +38,8 @@ function getComputerChoice() {
   let round = 0;
   let computerScore = 0;
   let playerScore = 0;
-  
+  s1=document.querySelector(".s1")
+  s2=document.querySelector(".s2")
   document.querySelectorAll("button").forEach(button => {
     button.addEventListener('click', () => {
       const playerSelection = button.value;
@@ -48,11 +49,14 @@ function getComputerChoice() {
       switch (result) {
         case "computer wins":
           computerScore++;
+          s2.value=computerScore;  
+        
           alert("Computer wins!");
           break;
         case "you win":
           playerScore++;
           alert("You win!");
+          s1.value=playerScore; 
           break;
         case "draw":
           alert("It's a draw!");
@@ -64,7 +68,8 @@ function getComputerChoice() {
       
       if (round >= 5) {
         alert(`Game over! Final scores: Computer ${computerScore}, You ${playerScore}`);
-        location.reload()
+        location.reload();
+        document.querySelectorAll("input").forEach('input',()=>{input.value=""});
       }
     });
   });
