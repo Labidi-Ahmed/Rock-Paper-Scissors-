@@ -38,8 +38,12 @@ function getComputerChoice() {
   let round = 0;
   let computerScore = 0;
   let playerScore = 0;
-  s1=document.querySelector(".s1")
-  s2=document.querySelector(".s2")
+  
+  // Get references to the elements you want to update
+  const winner = document.querySelector(".winner");
+  const s1 = document.querySelector(".scoreP");
+  const s2 = document.querySelector(".scoreC");
+  
   document.querySelectorAll("button").forEach(button => {
     button.addEventListener('click', () => {
       const playerSelection = button.value;
@@ -49,27 +53,27 @@ function getComputerChoice() {
       switch (result) {
         case "computer wins":
           computerScore++;
-          s2.value=computerScore;  
-        
-          alert("Computer wins!");
+          s2.innerHTML = computerScore;  
+          winner.innerHTML = "You lost!";
           break;
         case "you win":
           playerScore++;
-          alert("You win!");
-          s1.value=playerScore; 
+          winner.innerHTML = "You won!";
+          s1.innerHTML = playerScore; 
           break;
         case "draw":
-          alert("It's a draw!");
+          winner.innerHTML = "It's a draw!";
           break;
       }
       
       round++;
       
-      
       if (round >= 5) {
         alert(`Game over! Final scores: Computer ${computerScore}, You ${playerScore}`);
         location.reload();
-        document.querySelectorAll("input").forEach('input',()=>{input.value=""});
+        document.querySelectorAll("input").forEach(input => {
+          input.value = "";
+        });
       }
     });
   });
