@@ -49,6 +49,10 @@ function getComputerChoice() {
       const playerSelection = button.value;
       const computerSelection = getComputerChoice();
       const result = playRound(computerSelection, playerSelection);
+      const popup=document.querySelector(".popup");
+      const popupHeader=document.querySelector(".header");
+      const overflow=document.querySelector("#overlay");
+      const playAgain=document.querySelector(".again");
       
       switch (result) {
         case "computer wins":
@@ -69,8 +73,11 @@ function getComputerChoice() {
       round++;
       
       if (round >= 5) {
-        alert(`Game over! Final scores: Computer ${computerScore}, You ${playerScore}`);
-        location.reload();
+        popupHeader.innerHTML=(`Game over! Final scores: Computer ${computerScore}, You ${playerScore}`);
+        popup.classList.add("active")
+        overflow.classList.add("active")
+        playAgain.addEventListener('click',()=>{window.location.reload()})
+        
         document.querySelectorAll("input").forEach(input => {
           input.value = "";
         });
