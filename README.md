@@ -1,2 +1,2 @@
 # Rock-Paper-Scissors-
-<a href="#"> live-preview</a>
+<a href="https://labidi-ahmed.github.io/Rock-Paper-Scissors-/"> live-preview👈</a>
